@@ -1,0 +1,689 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Product Details - Rebelvids Academy</title>
+  <link rel="icon" type="image/png" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg72dLQsTikwIUPO3SUMAILy1otx_2-tYliOzSNiKWQAHvevzOuH6p-fI-Ep9MMvtkbZXnwrAILLDLo9yBVgrIVRHl69BQiMMBSnZjL4w5L2kzZENmwqis6wie594T28-udOmCk6qPH5Qn-zP2fA1D6V8sz4gqdOMFEMUdrI-axhgW7uV0kfhhoqUa8u2S_/s1600/logo.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar fixed">
+    <div class="container header-inner">
+      <div class="logo-small"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg72dLQsTikwIUPO3SUMAILy1otx_2-tYliOzSNiKWQAHvevzOuH6p-fI-Ep9MMvtkbZXnwrAILLDLo9yBVgrIVRHl69BQiMMBSnZjL4w5L2kzZENmwqis6wie594T28-udOmCk6qPH5Qn-zP2fA1D6V8sz4gqdOMFEMUdrI-axhgW7uV0kfhhoqUa8u2S_/s1600/logo.png" alt="Rebelvids Academy logo" class="logo-img"></div>
+      <div class="nav-capsule">
+        <nav class="nav">
+          <a href="index.html">Home</a>
+          <a href="shop.html">Shop</a>
+          <a href="courses.html">Courses</a>
+          <a href="bundle.html">Bundles</a>
+          <a href="#why-different">Why Us</a>
+          <a href="contact.html">Contact Us</a>
+        </nav>
+      </div>
+      <div class="header-cta">
+        <a class="cta-pill header-auth-opener" href="#">Login/Sign up <span class="cta-arrow">→</span></a>
+      </div>
+      <button class="nav-toggle" aria-expanded="false" aria-label="Open menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      <div class="mobile-nav" aria-hidden="true">
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="shop.html">Shop</a>
+          <a href="courses.html">Courses</a>
+          <a href="bundle.html">Bundles</a>
+          <a href="#why-different">Why Us</a>
+          <a href="index.html#faq-faq-bottom">FAQs</a>
+          <a href="shipping-delivery.html">Shipping & Delivery</a>
+        </nav>
+        <div class="mobile-cta"><a class="cta-pill header-auth-opener" href="#">Login/Sign up <span class="cta-arrow">→</span></a></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="page" style="padding-top:100px">
+    <div class="container">
+      <!-- Breadcrumb -->
+      <nav style="margin-bottom:20px;font-size:13px;color:var(--muted)">
+        <a href="index.html" style="color:var(--accent);text-decoration:none">Home</a> / 
+        <span id="breadcrumb-category" style="color:var(--muted)">Product</span> / 
+        <span id="breadcrumb-title" style="color:#fff">Loading...</span>
+      </nav>
+
+      <!-- Product Details Section -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-bottom:60px">
+        <!-- Left: Product Image -->
+        <div id="product-image-container" style="background:linear-gradient(180deg,#041526,#031322);border-radius:16px;padding:40px;border:2px solid rgba(11,58,96,0.6);position:relative;min-height:400px;display:flex;align-items:center;justify-content:center">
+          <div style="position:relative;width:100%;max-width:500px">
+            <img id="product-main-image" src="" alt="Product" style="width:100%;height:auto;border-radius:12px">
+            <button id="play-video-btn" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.7);border:none;border-radius:50%;width:80px;height:80px;cursor:pointer;display:none;align-items:center;justify-content:center">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 8.5L16 12L10 15.5V8.5Z" fill="white"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Right: Product Info -->
+        <div>
+          <h1 id="product-title" class="section-title" style="font-size:32px;margin-bottom:12px">Loading...</h1>
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
+            <div style="display:flex;gap:4px">
+              <span style="color:#ffd700">★★★★★</span>
+            </div>
+            <span style="color:var(--muted);font-size:14px">(Customer reviews)</span>
+          </div>
+          
+          <!-- Price -->
+          <div id="product-price-container" style="margin-bottom:24px">
+            <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+              <span id="product-price" style="font-size:32px;font-weight:900;color:#0ea5ff">₹0</span>
+              <span id="product-original-price" style="font-size:20px;color:var(--muted);text-decoration:line-through;display:none">₹0</span>
+              <span id="product-discount" style="background:linear-gradient(90deg,#ff4444,#ff6666);color:#fff;padding:6px 12px;border-radius:8px;font-size:14px;font-weight:700;display:none">-50% OFF</span>
+            </div>
+          </div>
+
+          <!-- Quantity & Buttons -->
+          <div style="margin-bottom:24px">
+            <label style="display:block;margin-bottom:8px;color:var(--muted);font-size:14px">Quantity</label>
+            <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+              <div style="display:flex;align-items:center;gap:0;border:2px solid rgba(255,255,255,0.1);border-radius:8px;overflow:hidden">
+                <button id="qty-minus" style="background:transparent;border:none;color:#fff;padding:12px 16px;cursor:pointer;font-size:18px">-</button>
+                <input type="number" id="product-qty" value="1" min="1" style="background:transparent;border:none;color:#fff;width:60px;text-align:center;padding:12px;font-size:16px;font-weight:700">
+                <button id="qty-plus" style="background:transparent;border:none;color:#fff;padding:12px 16px;cursor:pointer;font-size:18px">+</button>
+              </div>
+              <button id="add-to-cart-btn" class="primary-btn" style="flex:1;min-width:150px">Add To Cart</button>
+              <button id="buy-now-btn" class="primary-btn" style="flex:1;min-width:150px;background:linear-gradient(90deg,#10b981,#059669)">Buy Now</button>
+            </div>
+          </div>
+
+          <!-- Additional Info -->
+          <div style="background:rgba(255,255,255,0.02);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.05);margin-bottom:20px">
+            <p style="color:var(--muted);font-size:14px;margin:0;display:flex;align-items:center;gap:8px">
+              <span>👁️</span> <span>People watching this product now!</span>
+            </p>
+          </div>
+
+          <!-- Share -->
+          <div style="display:flex;align-items:center;gap:12px">
+            <span style="color:var(--muted);font-size:14px">Share:</span>
+            <div style="display:flex;gap:8px">
+              <a href="#" style="color:var(--accent);text-decoration:none;font-size:20px">📘</a>
+              <a href="#" style="color:var(--accent);text-decoration:none;font-size:20px">🐦</a>
+              <a href="#" style="color:var(--accent);text-decoration:none;font-size:20px">💼</a>
+              <a href="#" style="color:var(--accent);text-decoration:none;font-size:20px">📌</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Tabs -->
+      <div style="margin-bottom:60px">
+        <div style="display:flex;gap:0;border-bottom:2px solid rgba(255,255,255,0.1);margin-bottom:24px">
+          <button class="product-tab active" data-tab="description">DESCRIPTION</button>
+          <button class="product-tab" data-tab="reviews">REVIEWS</button>
+          <a class="product-tab" href="shipping-delivery.html">SHIPPING & DELIVERY</a>
+        </div>
+        <div id="tab-description" class="tab-content active">
+          <p id="product-description" style="color:var(--muted);line-height:1.8;font-size:15px">Loading description...</p>
+        </div>
+        <div id="tab-reviews" class="tab-content" style="display:none">
+          <p style="color:var(--muted);line-height:1.8">Customer reviews will be displayed here.</p>
+        </div>
+        <div id="tab-shipping" class="tab-content" style="display:none">
+          <p style="color:var(--muted);line-height:1.8">Shipping and delivery information will be displayed here.</p>
+        </div>
+      </div>
+
+      <!-- Related Products -->
+      <section>
+        <h2 class="section-title" style="margin-bottom:24px">Related Products</h2>
+        <div id="related-products" class="courses-grid"></div>
+      </section>
+    </div>
+  </main>
+  <script>
+    (function(){
+      var sels=['.section-title','#product-image-container','#product-main-image','#product-price-container','#add-to-cart-btn','#buy-now-btn'];
+      sels.forEach(function(s){ document.querySelectorAll(s).forEach(function(el,i){ if(!el.hasAttribute('data-reveal')){ el.setAttribute('data-reveal','fade-up'); el.style.setProperty('--reveal-delay',(i*70)+'ms'); } }); });
+      if('IntersectionObserver' in window){ var obs=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('is-visible'); obs.unobserve(e.target);} }); },{threshold:0.2,rootMargin:'0px 0px -10% 0px'}); document.querySelectorAll('[data-reveal]').forEach(function(el){ obs.observe(el); }); } else { document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('is-visible'); }); }
+    })();
+  </script>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <div class="logo">Rebelvids Academy</div>
+        <p class="desc">Whether you're a busy YouTuber or a struggling freelancer, Rebelvids Academy will take you to the next level.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="col">
+          <h5>Solutions</h5>
+          <ul><li><a href="index.html">Home</a></li><li><a href="shop.html">Shop</a></li><li><a href="courses.html">Courses</a></li><li><a href="bundle.html">Bundles</a></li></ul>
+        </div>
+        <div class="col">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="#">Why Us</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="shipping-delivery.html">Shipping & Delivery</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="terms-conditions.html">Terms & Conditions</a></li>
+            <li><a href="refund-policy.html">Refund & Return Policy</a></li>
+            <li><a href="cookies-policy.html">Cookies Policy</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-copy" style="margin-top:18px;width:100%">
+        <p style="color:rgba(255,255,255,0.55);font-size:13px;margin:12px 0 0">© 2025 Rebelvids Academy. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Auth modals and script -->
+  <div id="auth-modal" class="modal" aria-hidden="true">
+    <div class="modal-backdrop"></div>
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+      <button class="modal-close" aria-label="Close">✕</button>
+      <h3 id="auth-title">Continue</h3>
+      <p class="modal-sub">Sign in with your Google account.</p>
+      <div class="modal-form" style="display:flex;flex-direction:column;gap:12px">
+        <button id="google-signin-btn" class="primary-btn" type="button" style="display:inline-flex;align-items:center;gap:8px;justify-content:center">
+          <span>Continue with Google</span>
+        </button>
+        <a href="#" class="modal-cancel" style="text-align:center">Cancel</a>
+      </div>
+    </div>
+  </div>
+  <div id="create-modal" class="modal" aria-hidden="true">
+    <div class="modal-backdrop"></div>
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="create-title">
+      <button class="modal-close" aria-label="Close">✕</button>
+      <h3 id="create-title">Create Account</h3>
+      <p class="modal-sub">Use Google Sign-In to continue.</p>
+      <div class="modal-actions" style="display:flex;gap:12px;align-items:center">
+        <button id="google-signin-btn-shadow" class="primary-btn" type="button">Continue with Google</button>
+        <a href="#" class="modal-cancel">Cancel</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  (function(){
+    const SESSION_KEY = 'rva_session';
+    function getSession(){ try{ return JSON.parse(localStorage.getItem(SESSION_KEY)||'null'); }catch(e){return null} }
+    function setSession(id){ localStorage.setItem(SESSION_KEY, JSON.stringify(id)); window.dispatchEvent(new Event('storage')); }
+    // validators
+    function validateEmail(email){ const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; return re.test(email); }
+    function passwordStrength(pw){ let score=0; if(!pw) return {score:0,label:'Empty'}; if(pw.length>=8)score++; if(/[A-Z]/.test(pw) && /[a-z]/.test(pw)) score++; if(/\d/.test(pw)) score++; if(/[^A-Za-z0-9]/.test(pw)) score++; let label='Weak'; if(score>=3) label='Medium'; if(score>=4) label='Strong'; return {score,label}; }
+    async function sha256hex(str){ const enc=new TextEncoder(); const data=enc.encode(str); const hash=await crypto.subtle.digest('SHA-256', data); return Array.from(new Uint8Array(hash)).map(b=>b.toString(16).padStart(2,'0')).join(''); }
+
+    let authModalsInitialized = false;
+    function initAuthModals(){
+      if(authModalsInitialized) return;
+      const authModal = document.getElementById('auth-modal');
+      const createModal = document.getElementById('create-modal');
+      const desktopBtn = document.getElementById('header-auth');
+      const mobileOpenBtn = document.querySelector('.mobile-nav .header-auth-opener');
+      const openers = [];
+      if(desktopBtn) openers.push(desktopBtn);
+      document.querySelectorAll('.header-auth-opener').forEach(el=>{
+        if(!openers.includes(el)) openers.push(el);
+      });
+
+      if(!authModal || !createModal){
+        setTimeout(initAuthModals, 100);
+        return;
+      }
+
+      authModalsInitialized = true;
+
+      function openAuth(){
+        const modal = document.getElementById('auth-modal');
+        if(modal){
+          modal.setAttribute('aria-hidden','false');
+          document.body.style.overflow='hidden';
+          const gbtn = modal.querySelector('#google-signin-btn');
+          if(gbtn) gbtn.focus();
+        }
+      }
+      function closeAuth(){
+        const modal = document.getElementById('auth-modal');
+        if(modal){
+          modal.setAttribute('aria-hidden','true');
+          document.body.style.overflow='';
+        }
+      }
+      function openCreate(){
+        const modal = document.getElementById('create-modal');
+        if(modal){
+          modal.setAttribute('aria-hidden','false');
+          document.body.style.overflow='hidden';
+          const nameInput = modal.querySelector('#create_name');
+          if(nameInput) nameInput.focus();
+        }
+      }
+      function closeCreate(){
+        const modal = document.getElementById('create-modal');
+        if(modal){
+          modal.setAttribute('aria-hidden','true');
+          document.body.style.overflow='';
+        }
+      }
+
+      openers.forEach(btn=>{
+        btn.addEventListener('click', function(e){
+          try{ if(getSession()) return; }catch(e){}
+          e.preventDefault();
+          e.stopPropagation();
+          openAuth();
+        });
+      });
+
+      if(mobileOpenBtn && !openers.includes(mobileOpenBtn)){
+        mobileOpenBtn.addEventListener('click', function(e){
+          try{ if(getSession()) return; }catch(e){}
+          e.preventDefault();
+          e.stopPropagation();
+          openAuth();
+        });
+      }
+
+      document.addEventListener('click', function(e){
+        const a = e.target.closest && e.target.closest('.header-auth-opener');
+        if(!a) return;
+        try{ if(getSession()) return; }catch(e){}
+        e.preventDefault();
+        e.stopPropagation();
+        openAuth();
+      }, true);
+
+      window.openAuth = openAuth;
+      window.closeAuth = closeAuth;
+      window.openCreate = openCreate;
+      window.closeCreate = closeCreate;
+    }
+
+    if(document.readyState === 'loading'){
+      document.addEventListener('DOMContentLoaded', initAuthModals);
+    } else {
+      initAuthModals();
+    }
+    setTimeout(initAuthModals, 200);
+
+    let modalCloseInitialized = false;
+    function initModalCloseHandlers(){
+      if(modalCloseInitialized) return;
+      const authModal = document.getElementById('auth-modal');
+      const createModal = document.getElementById('create-modal');
+      if(!authModal || !createModal){
+        setTimeout(initModalCloseHandlers, 100);
+        return;
+      }
+      modalCloseInitialized = true;
+      [authModal, createModal].forEach(m=>{
+        if(!m) return;
+        const cb = m.querySelector('.modal-close');
+        if(cb) cb.addEventListener('click', ()=>{
+          m.setAttribute('aria-hidden','true');
+          document.body.style.overflow='';
+        });
+        m.querySelectorAll('.modal-cancel').forEach(c=> c.addEventListener('click', function(ev){
+          ev.preventDefault();
+          m.setAttribute('aria-hidden','true');
+          document.body.style.overflow='';
+        }));
+        m.addEventListener('click', function(e){
+          if(e.target.classList.contains('modal')||e.target.classList.contains('modal-backdrop')){
+            m.setAttribute('aria-hidden','true');
+            document.body.style.overflow='';
+          }
+        });
+      });
+    }
+    if(document.readyState === 'loading'){
+      document.addEventListener('DOMContentLoaded', initModalCloseHandlers);
+    } else {
+      initModalCloseHandlers();
+    }
+    setTimeout(initModalCloseHandlers, 200);
+
+    // live hint
+    const createPwd = document.getElementById('create_password'); const createPwHint = document.getElementById('create-pw-hint'); if(createPwd && createPwHint){ createPwd.addEventListener('input', function(){ const s = passwordStrength(createPwd.value); createPwHint.textContent = `Password strength: ${s.label}`; createPwHint.style.color = s.label==='Strong'? '#7CFC00' : (s.label==='Medium'? '#FFD700' : 'var(--muted)'); }); }
+
+    // Email/password flows removed for Google-only auth
+
+    // update header anchors on this page to show profile when logged-in
+    async function updateHeaderLocal(){ const sess = getSession(); const anchors = Array.from(document.querySelectorAll('.header-auth-opener')); if(sess){ const getUsersFn = window.getUsers || (async () => { try{return JSON.parse(localStorage.getItem('rva_users')||'[]')}catch(e){return[]} }); const users = await getUsersFn(); const user = users.find(u=>u.id===sess); anchors.forEach(a=>{ if(user){ a.innerHTML = `<span style="display:inline-flex;align-items:center;gap:8px"><span style=\"width:28px;height:28px;border-radius:999px;background:linear-gradient(90deg,#0b78ff,#00a6ff);display:inline-flex;align-items:center;justify-content:center;color:#02141a;font-weight:800\">${user.name.charAt(0).toUpperCase()}</span>${user.name}</span>`; a.href='profile.html'; } else { a.innerHTML = 'Login/Sign up <span class="cta-arrow">→</span>'; a.href='#'; } }); } else { anchors.forEach(a=>{ a.innerHTML = 'Login/Sign up <span class="cta-arrow">→</span>'; a.href='#'; }); } }
+    // Wait for module script to load before updating header
+    setTimeout(updateHeaderLocal, 100);
+    window.addEventListener('storage', updateHeaderLocal);
+
+  })();
+  </script>
+
+  <style>
+    .product-tab{
+      background:transparent;border:none;color:var(--muted);padding:12px 20px;cursor:pointer;font-size:14px;font-weight:600;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all 0.3s
+    }
+    .product-tab:hover{color:#fff}
+    .product-tab.active{color:#0ea5ff;border-bottom-color:#0ea5ff}
+    .tab-content{min-height:200px;padding:20px 0}
+    #product-image-container img{max-width:100%;height:auto;object-fit:contain}
+    @media (max-width:768px){
+      .page > .container > div:first-of-type{grid-template-columns:1fr !important;gap:24px !important}
+      #product-price-container{flex-direction:column;align-items:flex-start !important}
+      #product-price{font-size:24px !important}
+      .product-tab{padding:10px 12px;font-size:12px}
+    }
+  </style>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
+    import { getDatabase, ref, get, set } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-database.js";
+    import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyA_NjUa3NUIDXmrxlGS246ZqpBRurR6QYw",
+      authDomain: "rebelvids-academy.firebaseapp.com",
+      databaseURL: "https://rebelvids-academy-default-rtdb.firebaseio.com",
+      projectId: "rebelvids-academy",
+      storageBucket: "rebelvids-academy.firebasestorage.app",
+      messagingSenderId: "428974451833",
+      appId: "1:428974451833:web:d2966813296557499e78a8",
+      measurementId: "G-NF6GQ225WM"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
+    const productsRef = ref(database, 'products');
+    const usersRef = ref(database, 'users');
+
+    // Get product ID from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('id');
+
+    const CART = 'rva_cart';
+    
+    // Firebase users functions
+    async function getUsers(){ 
+      try {
+        const snapshot = await get(usersRef);
+        if(snapshot.exists()) {
+          const data = snapshot.val();
+          return Object.keys(data).map(key => ({ ...data[key], id: key }));
+        }
+        // Fallback to local users when no users exist in RTDB yet
+        try{ return JSON.parse(localStorage.getItem('rva_users')||'[]'); }catch(_){ return []; }
+      } catch(e) {
+        console.error('Error fetching users:', e);
+        try{return JSON.parse(localStorage.getItem('rva_users')||'[]')}catch(err){return[]}
+      }
+    }
+    
+    async function saveUser(user){
+      try {
+        const userId = user.id || Date.now().toString();
+        const userRef = ref(database, `users/${userId}`);
+        const { id, ...userData } = user;
+        await set(userRef, { ...userData, id: userId });
+        window.dispatchEvent(new CustomEvent('rva_users_updated'));
+        return true;
+      } catch(e) {
+        console.error('Error saving user:', e);
+        return false;
+      }
+    }
+    
+    // Expose functions globally for non-module scripts
+    window.getUsers = getUsers;
+    window.saveUser = saveUser;
+    
+    function getCart(){ try{return JSON.parse(localStorage.getItem(CART)||'[]')}catch(e){return[]} }
+    function saveCart(c){ localStorage.setItem(CART, JSON.stringify(c)); window.dispatchEvent(new Event('storage')); }
+    
+    function checkLogin(){
+      try{
+        const session = JSON.parse(localStorage.getItem('rva_session')||'null');
+        return !!session;
+      }catch(e){
+        return false;
+      }
+    }
+    
+    function requireLogin(action){
+      if(!checkLogin()){
+        alert('Please login first to ' + action);
+        // Open login modal
+        const authModal = document.getElementById('auth-modal');
+        if(authModal){
+          authModal.setAttribute('aria-hidden','false');
+          document.body.style.overflow='hidden';
+          const gbtn = authModal.querySelector('#google-signin-btn');
+          if(gbtn) gbtn.focus();
+        }
+        return false;
+      }
+      return true;
+    }
+    
+    function showToast(msg){
+      let t = document.getElementById('site-toast');
+      if(!t){ 
+        t = document.createElement('div'); 
+        t.id='site-toast'; 
+        t.style.position='fixed'; 
+        t.style.right='18px'; 
+        t.style.bottom='18px'; 
+        t.style.background='rgba(3,26,40,0.9)'; 
+        t.style.color='#fff'; 
+        t.style.padding='10px 14px'; 
+        t.style.borderRadius='8px'; 
+        t.style.boxShadow='0 8px 28px rgba(0,0,0,0.6)'; 
+        document.body.appendChild(t); 
+      }
+      t.textContent = msg; 
+      t.style.opacity = '1'; 
+      setTimeout(()=>{ 
+        t.style.transition='opacity .6s'; 
+        t.style.opacity='0'; 
+      },1200);
+    }
+    
+    async function addToCart(id){
+      if(!requireLogin('add items to cart')) return;
+      const items = await getItems(); 
+      const it = items.find(x=>x.id===id); 
+      if(!it) return showToast('Item not found');
+      const cart = getCart(); 
+      const session = JSON.parse(localStorage.getItem('rva_session')||'null');
+      const qty = parseInt(document.getElementById('product-qty').value) || 1;
+      const existing = cart.find(c=>c.id===id && c.userId===session);
+      if(existing) {
+        existing.qty = (existing.qty||1) + qty;
+      } else {
+        cart.push({ id: it.id, title: it.title, price: it.price, qty: qty, image: it.image, userId: session });
+      }
+      saveCart(cart); 
+      showToast('Added to cart');
+    }
+
+    async function getItems(){
+      try {
+        const snapshot = await get(productsRef);
+        if(snapshot.exists()) {
+          const data = snapshot.val();
+          return Object.keys(data).map(key => ({ ...data[key], id: key }));
+        }
+        return [];
+      } catch(e) {
+        console.error('Error fetching products:', e);
+        return [];
+      }
+    }
+
+    function cardHTML(item){
+      let priceHtml = `<p style="font-weight:900;margin-top:10px;color:#0ea5ff">₹${item.price}</p>`;
+      if(item.originalPrice && parseFloat(item.originalPrice) > 0){
+        const discount = item.discountPercent ? `${item.discountPercent}% OFF` : '';
+        priceHtml = `
+          <div style="margin-top:10px">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+              <p style="font-weight:900;color:#0ea5ff;font-size:18px;margin:0">₹${item.price}</p>
+              ${discount ? `<span style="background:linear-gradient(90deg,#ff4444,#ff6666);color:#fff;padding:3px 8px;border-radius:4px;font-size:11px;font-weight:700">${discount}</span>` : ''}
+            </div>
+            <p style="color:var(--muted);text-decoration:line-through;font-size:13px;margin:0">₹${item.originalPrice}</p>
+          </div>
+        `;
+      }
+      return `<article class="course-card"><div class="thumb"><a href="product-details.html?id=${item.id}"><img src="${item.image}" alt="${item.title}"></a></div><div class="card-body"><h3>${item.title}</h3><p>${item.description||''}</p>${priceHtml}<div style="display:flex;gap:8px;align-items:center;margin-top:10px;flex-wrap:wrap"><button class="primary-btn" onclick="window.location.href='product-details.html?id=${item.id}'" style="border:none;cursor:pointer">Add To Cart</button></div></div></article>`;
+    }
+
+    async function loadProduct(){
+      if(!productId){
+        document.body.innerHTML = '<div class="container" style="padding-top:100px"><h1>Product not found</h1><a href="shop.html">Go to Shop</a></div>';
+        return;
+      }
+
+      const items = await getItems();
+      const product = items.find(p => p.id === productId);
+
+      if(!product){
+        document.body.innerHTML = '<div class="container" style="padding-top:100px"><h1>Product not found</h1><a href="shop.html">Go to Shop</a></div>';
+        return;
+      }
+
+      // Set product details
+      document.getElementById('product-title').textContent = product.title;
+      document.getElementById('breadcrumb-title').textContent = product.title;
+      document.getElementById('breadcrumb-category').textContent = product.category || 'Product';
+      document.getElementById('product-main-image').src = product.image;
+      document.getElementById('product-main-image').alt = product.title;
+      document.getElementById('product-description').textContent = product.description || 'No description available.';
+      
+      // Set price
+      const priceEl = document.getElementById('product-price');
+      const originalPriceEl = document.getElementById('product-original-price');
+      const discountEl = document.getElementById('product-discount');
+      
+      priceEl.textContent = `₹${product.price || '0'}`;
+      
+      if(product.originalPrice && parseFloat(product.originalPrice) > 0){
+        originalPriceEl.textContent = `₹${product.originalPrice}`;
+        originalPriceEl.style.display = 'block';
+        if(product.discountPercent){
+          discountEl.textContent = `-${product.discountPercent}% OFF`;
+          discountEl.style.display = 'inline-block';
+        }
+      }
+
+      // Load related products (same category, excluding current)
+      const related = items.filter(p => p.category === product.category && p.id !== productId).slice(0, 4);
+      const relatedContainer = document.getElementById('related-products');
+      if(related.length > 0){
+        relatedContainer.innerHTML = related.map(cardHTML).join('');
+      } else {
+        relatedContainer.innerHTML = '<p style="color:var(--muted)">No related products found.</p>';
+      }
+
+      // Set Buy Now to use backend-created Razorpay link with product price; fallback to existing link or download link
+      document.getElementById('buy-now-btn').onclick = async function(e){
+        e.preventDefault();
+        if(!requireLogin('buy this product')) return;
+        try{
+          if(product && product.paymentLink){ window.location.href = product.paymentLink; return; }
+          const amountNum = parseFloat(product && product.price ? product.price : '0');
+          const redirectUrl = (product && product.buyLink && product.buyLink !== '#') ? product.buyLink : window.location.href;
+          if(!Number.isFinite(amountNum) || amountNum <= 0){ alert('Invalid product price.'); return; }
+          const resp = await fetch('https://asia-south1-rebelvids-academy.cloudfunctions.net/createPaymentLink',{
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
+            body: JSON.stringify({ title: product.title, amount: amountNum, currency:'INR', redirectUrl })
+          });
+          if(resp.ok){
+            const data = await resp.json();
+            if(data && data.short_url){ window.location.href = data.short_url; return; }
+          }
+          if(product && product.buyLink && product.buyLink !== '#'){ window.location.href = product.buyLink; return; }
+          alert('Payment link not available for this product yet.');
+        }catch(_){
+          if(product && product.buyLink && product.buyLink !== '#'){ window.location.href = product.buyLink; return; }
+          alert('Payment link could not be created at the moment. Please try again later.');
+        }
+      };
+      // Add to Cart functionality
+      document.getElementById('add-to-cart-btn').onclick = async function(e){
+        e.preventDefault();
+        await addToCart(productId);
+      };
+    }
+
+    // Quantity controls
+    document.getElementById('qty-minus').addEventListener('click', function(){
+      const qty = document.getElementById('product-qty');
+      if(parseInt(qty.value) > 1) qty.value = parseInt(qty.value) - 1;
+    });
+    document.getElementById('qty-plus').addEventListener('click', function(){
+      const qty = document.getElementById('product-qty');
+      qty.value = parseInt(qty.value) + 1;
+    });
+
+    // Tab switching
+    document.querySelectorAll('.product-tab').forEach(tab => {
+      tab.addEventListener('click', function(){
+        if(this.tagName && this.tagName.toLowerCase()==='a') return;
+        const tabName = this.dataset.tab;
+        document.querySelectorAll('.product-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(c => c.style.display = 'none');
+        this.classList.add('active');
+        document.getElementById(`tab-${tabName}`).style.display = 'block';
+      });
+    });
+
+    // Google Auth (sign-in with popup)
+    function setSessionLS(id){ try{ localStorage.setItem('rva_session', JSON.stringify(id)); window.dispatchEvent(new Event('storage')); }catch(_){} }
+    function getUsersLS(){ try{return JSON.parse(localStorage.getItem('rva_users')||'[]')}catch(e){return[]} }
+    function saveUsersLS(u){ localStorage.setItem('rva_users', JSON.stringify(u)); window.dispatchEvent(new Event('storage')); }
+    function upsertUserFromFirebaseLS(user){
+      const users = getUsersLS();
+      let name = user.displayName || (user.email ? user.email.split('@')[0] : 'User');
+      const email = user.email || '';
+      const idx = users.findIndex(u=>u.id===user.uid);
+      const payload = { id: user.uid, name, email, loginCount: (users[idx]?.loginCount||0)+1, purchases: users[idx]?.purchases||0 };
+      if(idx>=0) users[idx] = { ...users[idx], ...payload }; else users.push(payload);
+      saveUsersLS(users);
+    }
+    function attachG(btn){ if(!btn) return; btn.addEventListener('click', async ()=>{ try{ const result = await signInWithPopup(auth, provider); const user = result.user; upsertUserFromFirebaseLS(user); setSessionLS(user.uid); const modal = document.getElementById('auth-modal'); if(modal){ modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; } location.reload(); }catch(e){ console.error('Google sign-in failed', e); alert('Google sign-in failed. Please try again.'); } }); }
+    attachG(document.getElementById('google-signin-btn'));
+    attachG(document.getElementById('google-signin-btn-shadow'));
+    onAuthStateChanged(auth, (user)=>{ if(user){ upsertUserFromFirebaseLS(user); setSessionLS(user.uid); } });
+
+    // Mobile nav
+    document.addEventListener('DOMContentLoaded', function(){
+      const toggle = document.querySelector('.nav-toggle');
+      const mobileNav = document.querySelector('.mobile-nav');
+      if(toggle && mobileNav){
+        function setOpen(open){
+          toggle.classList.toggle('open', open);
+          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+          mobileNav.setAttribute('aria-hidden', open ? 'false' : 'true');
+        }
+        toggle.addEventListener('click', ()=>{ const isOpen = toggle.classList.contains('open'); setOpen(!isOpen); });
+        mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=>setOpen(false)));
+      }
+      loadProduct();
+    });
+  </script>
+  <script type="module">
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-analytics.js";
+    const analytics = getAnalytics(app);
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Terms & Conditions - Rebelvids Academy</title>
+  <link rel="icon" type="image/png" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg72dLQsTikwIUPO3SUMAILy1otx_2-tYliOzSNiKWQAHvevzOuH6p-fI-Ep9MMvtkbZXnwrAILLDLo9yBVgrIVRHl69BQiMMBSnZjL4w5L2kzZENmwqis6wie594T28-udOmCk6qPH5Qn-zP2fA1D6V8sz4gqdOMFEMUdrI-axhgW7uV0kfhhoqUa8u2S_/s1600/logo.png">
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="topbar fixed">
+    <div class="container header-inner">
+      <div class="logo-small"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg72dLQsTikwIUPO3SUMAILy1otx_2-tYliOzSNiKWQAHvevzOuH6p-fI-Ep9MMvtkbZXnwrAILLDLo9yBVgrIVRHl69BQiMMBSnZjL4w5L2kzZENmwqis6wie594T28-udOmCk6qPH5Qn-zP2fA1D6V8sz4gqdOMFEMUdrI-axhgW7uV0kfhhoqUa8u2S_/s1600/logo.png" alt="Rebelvids Academy logo" class="logo-img"></div>
+      <div class="nav-capsule">
+        <nav class="nav">
+          <a href="index.html">Home</a>
+          <a href="shop.html">Shop</a>
+          <a href="courses.html">Courses</a>
+          <a href="bundle.html">Bundles</a>
+          <a href="#why-different">Why Us</a>
+          <a href="index.html#faq-faq-bottom">FAQs</a>
+        </nav>
+      </div>
+      <div class="header-cta">
+        <a class="cta-pill" href="index.html">Back to Site <span class="cta-arrow">→</span></a>
+      </div>
+      <button class="nav-toggle" aria-expanded="false" aria-label="Open menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      <div class="mobile-nav" aria-hidden="true">
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="shop.html">Shop</a>
+          <a href="courses.html">Courses</a>
+          <a href="bundle.html">Bundles</a>
+          <a href="#why-different">Why Us</a>
+          <a href="index.html#faq-faq-bottom">FAQs</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="container">
+      <p class="eyebrow">Policy</p>
+      <h1 class="section-title">Terms & Conditions</h1>
+
+      <section class="policy-section" style="display:flex;flex-direction:column;gap:14px;max-width:900px;margin:16px 0 48px">
+        <p>Last updated: <strong><script>document.write(new Date().toLocaleDateString())</script></strong></p>
+
+        <h3>1. Acceptance of Terms</h3>
+        <p>By accessing or using Rebelvids Academy ("we", "us", "our"), you agree to these Terms & Conditions. If you do not agree, please do not use our services.</p>
+
+        <h3>2. Products and Access</h3>
+        <ul style="display:block;list-style:disc;margin-left:18px;line-height:1.7">
+          <li>Digital products (courses, bundles, templates) are for personal use unless otherwise stated.</li>
+          <li>Sharing, reselling, or distributing purchased content without permission is prohibited.</li>
+          <li>We may update, modify, or remove content to improve our offerings.</li>
+        </ul>
+
+        <h3>3. Accounts</h3>
+        <p>You are responsible for maintaining the confidentiality of your account and for all activities under your account.</p>
+
+        <h3>4. Payments</h3>
+        <p>All payments are processed by secure third-party gateways. Prices are subject to change without notice.</p>
+
+        <h3>5. Intellectual Property</h3>
+        <p>All site content, branding, and digital assets are owned by Rebelvids Academy or its licensors. Unauthorized use is not allowed.</p>
+
+        <h3>6. Limitation of Liability</h3>
+        <p>We are not liable for any indirect or consequential damages arising from the use of our services or products.</p>
+
+        <h3>7. Changes to Terms</h3>
+        <p>We may revise these Terms periodically. Continued use of the site means you accept the updated Terms.</p>
+
+        <h3>8. Contact</h3>
+        <p>Questions about these Terms? Email us at <a href="mailto:guinam991@gmail.com">guinam991@gmail.com</a>.</p>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    // Mobile nav toggle
+    document.addEventListener('DOMContentLoaded', function(){
+      const toggle = document.querySelector('.nav-toggle');
+      const mobileNav = document.querySelector('.mobile-nav');
+      if(!toggle || !mobileNav) return;
+      function setOpen(open){
+        toggle.classList.toggle('open', open);
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        mobileNav.setAttribute('aria-hidden', open ? 'false' : 'true');
+      }
+      toggle.addEventListener('click', ()=>{ const isOpen = toggle.classList.contains('open'); setOpen(!isOpen); });
+      mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=>setOpen(false)));
+      document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') setOpen(false) });
+    });
+  </script>
+  <script>
+    (function(){
+      var sels=['.section-title','.eyebrow','.policy-section','.site-footer .footer-left','.site-footer .footer-cols .col'];
+      sels.forEach(function(s){ document.querySelectorAll(s).forEach(function(el,i){ if(!el.hasAttribute('data-reveal')){ el.setAttribute('data-reveal','fade-up'); el.style.setProperty('--reveal-delay',(i*80)+'ms'); } }); });
+      if('IntersectionObserver' in window){ var obs=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('is-visible'); obs.unobserve(e.target);} }); },{threshold:0.2,rootMargin:'0px 0px -10% 0px'}); document.querySelectorAll('[data-reveal]').forEach(function(el){ obs.observe(el); }); } else { document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('is-visible'); }); }
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Admin - Rebelvids Academy</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar fixed">
+    <div class="container header-inner">
+      <div class="logo-small">Admin</div>
+      <div class="nav-capsule">
+        <nav class="nav">
+          <a href="index.html">Home</a>
+          <a href="shop.html">Shop</a>
+          <a href="courses.html">Courses</a>
+          <a href="bundle.html">Bundles</a>
+          <a href="#why-different">Why Us</a>
+          <a href="#faq-faq-bottom">FAQs</a>
+        </nav>
+      </div>
+      <div class="header-cta">
+        <a class="cta-pill" href="index.html">View Site <span class="cta-arrow">→</span></a>
+      </div>
+    </div>
+  </header>
+
+  <main class="page">
+    <div id="admin-wrap" class="container admin-wrap">
+      <h1 class="section-title">Admin Dashboard</h1>
+      <p class="eyebrow">Add new items (Courses, XML & Presets, Bundles)</p>
+
+      <form id="admin-form" class="admin-form" style="max-width:820px;margin:18px 0 12px;">
+        <div class="admin-form-row">
+          <label class="modal-label admin-col">Title<input id="a_title" type="text" placeholder="Item title" required></label>
+          <label class="modal-label admin-col">Image URL<input id="a_image" type="url" placeholder="https://.../image.jpg"></label>
+        </div>
+        <div class="admin-form-row">
+          <label class="modal-label admin-col">Upload Image<input id="a_image_file" type="file" accept="image/*"></label>
+          <div class="admin-col" style="display:flex;align-items:center;gap:12px">
+            <div id="a_image_preview" style="width:120px;height:80px;background:#02141a;border-radius:8px;overflow:hidden;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:12px">Preview</div>
+            <div style="color:var(--muted);font-size:13px">You can upload an image file. Uploaded images are stored in localStorage as data URLs.</div>
+          </div>
+        </div>
+        <label class="modal-label full">Description<textarea id="a_desc" placeholder="Short description" style="height:100px;padding:12px;border-radius:8px"></textarea></label>
+        <div class="admin-form-row">
+          <label class="modal-label">Price<input id="a_price" type="number" step="0.01" placeholder="9.99" required></label>
+          <label class="modal-label">Category
+            <select id="a_category">
+              <option value="Courses">Courses</option>
+              <option value="XML & Presets">XML & Presets</option>
+              <option value="Bundles">Bundles</option>
+            </select>
+          </label>
+        </div>
+        <div class="admin-form-row">
+          <label class="modal-label admin-col">
+            Original Price (for discount)<input id="a_original_price" type="number" step="0.01" placeholder="19.99">
+            <small style="color:var(--muted);font-size:11px;display:block;margin-top:4px">Leave empty if no discount</small>
+          </label>
+          <label class="modal-label admin-col">
+            Discount %<input id="a_discount_percent" type="number" step="1" min="0" max="100" placeholder="50">
+            <small style="color:var(--muted);font-size:11px;display:block;margin-top:4px">Optional: Show discount percentage</small>
+          </label>
+        </div>
+  <label class="modal-label full">Product Download Link(optional)<input id="a_link" type="url" placeholder="https://example.com/product-page"></label>
+  <label class="modal-label full">Product Price Link (Rozarpay)<input id="a_buylink" type="url" placeholder="https://example.com/checkout-page"></label>
+
+        <div class="admin-actions">
+          <button class="primary-btn" type="submit">Add Item</button>
+          <button id="admin-clear" class="ghost-btn btn-clear" type="button">Clear All Items</button>
+          <div id="admin-msg" style="color:var(--muted);margin-left:8px"></div>
+        </div>
+      </form>
+
+      <h3 class="section-title" style="font-size:18px;margin-top:18px">Existing items</h3>
+      <div id="admin-list" class="admin-list" style="margin-bottom:80px"></div>
+  <h3 class="section-title" style="font-size:18px;margin-top:8px">Registered Users</h3>
+  <div id="admin-users" style="margin-bottom:80px"></div>
+    </div>
+  </main>
+
+  
+
+  <script>
+    (function(){
+      var sels=['.section-title','.eyebrow','.admin-form','.admin-list','.compare-card','.site-footer .footer-left','.site-footer .footer-cols .col'];
+      sels.forEach(function(s){ document.querySelectorAll(s).forEach(function(el,i){ if(!el.hasAttribute('data-reveal')){ el.setAttribute('data-reveal','fade-up'); el.style.setProperty('--reveal-delay',(i*80)+'ms'); } }); });
+      if('IntersectionObserver' in window){ var obs=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('is-visible'); obs.unobserve(e.target);} }); },{threshold:0.2,rootMargin:'0px 0px -10% 0px'}); document.querySelectorAll('[data-reveal]').forEach(function(el){ obs.observe(el); }); } else { document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('is-visible'); }); }
+    })();
+  </script>
+  <script>
+    // LocalStorage key
+    const KEY = 'rva_items';
+    const DB_URL = 'https://rebelvids-academy-default-rtdb.firebaseio.com';
+    let CURRENT_EDIT_ID = null;
+
+    // Make edit helpers global so list item buttons can call them
+    function fillFormFromItem(item){
+      const form = document.getElementById('admin-form'); if(!form) return;
+      const t = document.getElementById('a_title'); if(t) t.value = item.title || '';
+      const iu = document.getElementById('a_image'); if(iu) iu.value = (item.image && !item.image.startsWith('data:')) ? item.image : '';
+      const d = document.getElementById('a_desc'); if(d) d.value = item.description || '';
+      const p = document.getElementById('a_price'); if(p) p.value = item.price || '';
+      const c = document.getElementById('a_category'); if(c) c.value = item.category || 'Courses';
+      const op = document.getElementById('a_original_price'); if(op) op.value = item.originalPrice || '';
+      const dp = document.getElementById('a_discount_percent'); if(dp) dp.value = item.discountPercent || '';
+      const l = document.getElementById('a_link'); if(l) l.value = item.link || '';
+      const bl = document.getElementById('a_buylink'); if(bl) bl.value = item.buyLink || '';
+      const preview = document.getElementById('a_image_preview');
+      const fileInput = document.getElementById('a_image_file');
+      if(preview && fileInput){
+        if(item.image){
+          preview.style.backgroundImage = `url('${item.image}')`;
+          preview.style.backgroundSize = 'cover';
+          preview.style.backgroundPosition = 'center';
+          preview.textContent='';
+          fileInput.dataset.dataurl = item.image.startsWith('data:') ? item.image : '';
+        } else {
+          preview.textContent='Preview';
+          preview.style.backgroundImage='';
+          fileInput.dataset.dataurl = '';
+        }
+      }
+    }
+    function beginEdit(it){
+      const form = document.getElementById('admin-form'); if(!form) return;
+      CURRENT_EDIT_ID = it.id;
+      fillFormFromItem(it);
+      const submitBtn = form.querySelector('button[type="submit"]');
+      if(submitBtn) submitBtn.textContent = 'Update Item';
+      let cancel = document.getElementById('admin-cancel-edit');
+      if(!cancel){
+        cancel = document.createElement('button');
+        cancel.id = 'admin-cancel-edit';
+        cancel.type = 'button';
+        cancel.className = 'ghost-btn';
+        cancel.textContent = 'Cancel Edit';
+        const actions = form.querySelector('.admin-actions');
+        if(actions){ const clearBtn = actions.querySelector('#admin-clear'); actions.insertBefore(cancel, clearBtn || actions.firstChild); }
+      }
+      cancel.onclick = function(){
+        CURRENT_EDIT_ID = null;
+        form.reset();
+        const preview = document.getElementById('a_image_preview'); if(preview){ preview.textContent='Preview'; preview.style.backgroundImage=''; }
+        const fileInput = document.getElementById('a_image_file'); if(fileInput){ fileInput.dataset.dataurl=''; }
+        const sb = form.querySelector('button[type="submit"]'); if(sb) sb.textContent = 'Add Item';
+        const cbtn = document.getElementById('admin-cancel-edit'); if(cbtn) cbtn.remove();
+      };
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function getItems(){
+      try{ return JSON.parse(localStorage.getItem(KEY) || '[]'); }catch(e){ return []; }
+    }
+    function saveItems(items){ localStorage.setItem(KEY, JSON.stringify(items)); }
+
+    async function fetchProductsFromFirebase(){
+      try{
+        const res = await fetch(`${DB_URL}/products.json`);
+        if(!res.ok) return [];
+        const data = await res.json();
+        if(data && typeof data === 'object'){
+          return Object.keys(data).map(k=>({ id:k, ...data[k] }));
+        }
+        return [];
+      }catch(e){ return []; }
+    }
+
+    async function putProductToFirebase(item){
+      try{
+        const { id, ...payload } = item;
+        const res = await fetch(`${DB_URL}/products/${id}.json`,{
+          method:'PUT',
+          headers:{ 'Content-Type':'application/json' },
+          body: JSON.stringify({ ...payload, id })
+        });
+        return res.ok;
+      }catch(e){ return false; }
+    }
+
+    async function deleteProductFromFirebase(id){
+      try{
+        const res = await fetch(`${DB_URL}/products/${id}.json`,{ method:'DELETE' });
+        return res.ok;
+      }catch(e){ return false; }
+    }
+
+    function renderList(){
+      const list = document.getElementById('admin-list'); list.innerHTML='';
+      const items = getItems().slice().reverse();
+      if(!items.length){ list.innerHTML = '<p style="color:var(--muted)">No items yet. Add one using the form above.</p>'; return; }
+      items.forEach(it=>{
+        const el = document.createElement('article'); el.className='compare-card';
+        let priceHtml = `<p style="font-weight:900;margin:12px 0">₹${it.price||'0'}</p>`;
+        if(it.originalPrice && parseFloat(it.originalPrice) > 0){
+          const discount = it.discountPercent ? `${it.discountPercent}% OFF` : '';
+          priceHtml = `
+            <div style="margin:12px 0">
+              <p style="font-weight:900;color:#fff;font-size:18px">₹${it.price||'0'}</p>
+              <p style="color:var(--muted);text-decoration:line-through;font-size:14px;margin:4px 0">₹${it.originalPrice}</p>
+              ${discount ? `<span style="background:linear-gradient(90deg,#ff4444,#ff6666);color:#fff;padding:4px 8px;border-radius:6px;font-size:12px;font-weight:700">${discount}</span>` : ''}
+            </div>
+          `;
+        }
+        el.innerHTML = `<h3>${it.title}</h3><p style="color:var(--muted)">${it.description || ''}</p>${priceHtml}`;
+        const actions = document.createElement('div'); actions.style.display='flex'; actions.style.gap='8px'; actions.style.marginTop='8px';
+        const edit = document.createElement('a'); edit.className='primary-btn'; edit.href='#'; edit.textContent='Edit'; edit.style.padding='6px 10px'; edit.addEventListener('click', function(e){ e.preventDefault(); beginEdit(it); });
+        const del = document.createElement('a'); del.className='ghost-btn'; del.href='#'; del.textContent='Delete'; del.addEventListener('click', async (e)=>{e.preventDefault(); if(!confirm('Delete this item?')) return; try{ await deleteProductFromFirebase(it.id); }catch{} const arr=getItems().filter(x=>x.id!==it.id); saveItems(arr); renderList(); window.dispatchEvent(new Event('storage')); });
+        actions.appendChild(edit); actions.appendChild(del); el.appendChild(actions);
+        list.appendChild(el);
+      })
+    }
+
+    document.addEventListener('DOMContentLoaded', function(){
+      // Merge Firebase items into localStorage so admin reflects live DB
+      (async function(){
+        const fetched = await fetchProductsFromFirebase();
+        if(fetched.length){
+          const existing = getItems();
+          const map = new Map();
+          existing.forEach(i=>map.set(i.id, i));
+          fetched.forEach(i=>map.set(i.id, i));
+          saveItems(Array.from(map.values()));
+        }
+        renderList();
+      })();
+      const form = document.getElementById('admin-form');
+
+      form.addEventListener('submit', async function(e){
+        e.preventDefault();
+        const title = document.getElementById('a_title').value.trim();
+        const imageUrl = document.getElementById('a_image').value.trim();
+        const imageFileData = document.getElementById('a_image_file').dataset.dataurl || '';
+        const image = imageFileData || imageUrl; // prefer uploaded file over URL
+        const description = document.getElementById('a_desc').value.trim();
+        const price = document.getElementById('a_price').value.trim();
+        const category = document.getElementById('a_category').value;
+        const originalPrice = document.getElementById('a_original_price').value.trim();
+        const discountPercent = document.getElementById('a_discount_percent').value.trim();
+        if(!title || !image) return;
+        const items = getItems();
+        const link = document.getElementById('a_link').value.trim();
+        const buyLink = document.getElementById('a_buylink').value.trim();
+        const item = { 
+          id: CURRENT_EDIT_ID || Date.now().toString(), 
+          title, 
+          image, 
+          description, 
+          price: price || '0', 
+          category, 
+          link: link || '', 
+          buyLink: buyLink || '',
+          originalPrice: originalPrice || '',
+          discountPercent: discountPercent || ''
+        };
+        // If price and buyLink present, attempt to create a Razorpay Payment Link via backend
+        try{
+          const amountNum = parseFloat(price);
+          if(amountNum > 0 && buyLink){
+            const resp = await fetch('https://asia-south1-rebelvids-academy.cloudfunctions.net/createPaymentLink',{
+              method:'POST',
+              headers:{'Content-Type':'application/json'},
+              body: JSON.stringify({ title, amount: amountNum, currency:'INR', redirectUrl: buyLink })
+            });
+            if(resp.ok){
+              const data = await resp.json();
+              if(data && data.short_url){ item.paymentLink = data.short_url; }
+            }
+          }
+        }catch(err){ /* ignore and proceed */ }
+        // Save to Firebase first; if it fails, still keep locally
+        await putProductToFirebase(item);
+        if(CURRENT_EDIT_ID){
+          const idx = items.findIndex(x=>x.id===CURRENT_EDIT_ID);
+          if(idx>=0) items[idx] = item; else items.push(item);
+        } else {
+          items.push(item);
+        }
+        saveItems(items); renderList(); window.dispatchEvent(new Event('storage'));
+        document.getElementById('admin-msg').textContent = CURRENT_EDIT_ID ? 'Updated ✔ (synced)' : 'Saved ✔ (synced)';
+        form.reset(); CURRENT_EDIT_ID=null; const submitBtn = form.querySelector('button[type="submit"]'); if(submitBtn) submitBtn.textContent = 'Add Item'; const cancel = document.getElementById('admin-cancel-edit'); if(cancel) cancel.remove();
+        // Reset image preview
+        document.getElementById('a_image_file').dataset.dataurl = '';
+        document.getElementById('a_image_preview').textContent = 'Preview';
+        document.getElementById('a_image_preview').style.backgroundImage = '';
+      });
+
+      document.getElementById('admin-clear').addEventListener('click', function(){ if(confirm('Remove ALL items from localStorage?')){ localStorage.removeItem(KEY); renderList(); } });
+
+      // Image file preview and data URL read
+      const fileInput = document.getElementById('a_image_file');
+      const preview = document.getElementById('a_image_preview');
+      if(fileInput){
+        fileInput.addEventListener('change', function(){
+          const f = fileInput.files && fileInput.files[0];
+          if(!f){ fileInput.dataset.dataurl = ''; preview.textContent = 'Preview'; preview.style.backgroundImage = ''; return; }
+          const reader = new FileReader();
+          reader.onload = function(ev){
+            const data = ev.target.result; // data URL
+            fileInput.dataset.dataurl = data;
+            preview.style.backgroundImage = `url('${data}')`;
+            preview.style.backgroundSize = 'cover';
+            preview.style.backgroundPosition = 'center';
+            preview.textContent = '';
+          };
+          reader.readAsDataURL(f);
+        });
+      }
+  // Render users list and login stats
+  function getUsers(){ try{return JSON.parse(localStorage.getItem('rva_users')||'[]')}catch(e){return[]} }
+  function renderUsers(){ const box = document.getElementById('admin-users'); const users = getUsers(); if(!box) return; if(!users.length){ box.innerHTML = '<p style="color:var(--muted)">No registered users yet.</p>'; return; } const loggedInCount = users.filter(u=>u.loginCount && u.loginCount>0).length; box.innerHTML = `<p style="color:var(--muted)">Total users: <strong>${users.length}</strong> — Logged in at least once: <strong>${loggedInCount}</strong></p>`; const ul = document.createElement('div'); ul.style.display='grid'; ul.style.gridTemplateColumns='repeat(auto-fill,minmax(220px,1fr))'; ul.style.gap='12px'; users.forEach(u=>{ const c = document.createElement('article'); c.className='admin-item'; c.innerHTML = `<h3>${u.name}</h3><p style="color:var(--muted)">${u.email}</p><p style="font-weight:800">Logins: ${u.loginCount||0}</p>`; ul.appendChild(c); }); box.appendChild(ul); }
+  renderUsers();
+    });
+  </script>
+</body>
+</html>
